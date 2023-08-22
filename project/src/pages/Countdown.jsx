@@ -1,19 +1,24 @@
-import React from "react";
+import Counter from "../components/Counter/Counter";
+import Title from "../components/Title/Title";
+
+import useCountdown from "../hooks/useCountdown";
 
 import "./Countdown.scss";
 
 const Countdown = () => {
+  const [day, hour, minute, second] = useCountdown();
+
   return (
-    <div className="container-count">
-      <div className="container-count-conteudo">
-        <h2>Countdown</h2>
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Perspiciatis assumenda dignissimos consequatur iste consectetur, ab
-            quisquam error quae ducimus suscipit minus doloremque placeat iusto
-            pariatur facilis quia a praesentium nostrum.
-          </p>
+    <div>
+      <div className="container-count">
+        <div className="container-count-conteudo">
+          <Title title="Contagem Regressiva" />
+          <div className="countdown-container">
+            <Counter title="Dias" number={day} />
+            <Counter title="Horas" number={hour} />
+            <Counter title="Minutos" number={minute} />
+            <Counter title="Segundos" number={second} />
+          </div>
         </div>
       </div>
     </div>

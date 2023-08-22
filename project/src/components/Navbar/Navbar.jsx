@@ -47,7 +47,11 @@ const Navbar = () => {
           </ul>
         </nav>
       </div>
-      {showMenu && <section></section>}
+      {showMenu && (
+        <div>
+          <section></section>
+        </div>
+      )}
     </>
   );
 };
