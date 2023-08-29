@@ -1,8 +1,9 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
     background-color: #222;
     .container-navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img {
             width: 10%;
             margin-left: -40px;
