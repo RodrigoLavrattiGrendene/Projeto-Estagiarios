@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useEffect } from "react";
 
 const Configuration = () => {
-  const [selectDate, setSelectDate] = useState(null);
-
   useEffect(() => {
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -12,7 +8,6 @@ const Configuration = () => {
     const secondsEl = document.getElementById("seconds");
 
     const newYear = "1 Jan 2024";
-    //const newYear = selectDate;
 
     const countdown = () => {
       const newYearDate = new Date(newYear);
@@ -40,52 +35,9 @@ const Configuration = () => {
     setInterval(countdown, 1000);
   }, []);
 
-  const dateFormatAux = (date) => {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [month, day, year].join("-");
-  };
-
-  const dateFormat = (date) => {
-    const formatYearMonthDay = dateFormatAux(date);
-    const formatISO = new Date(date).toISOString();
-
-    return [formatYearMonthDay, formatISO];
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let dateYMD, dateISO;
-
-    if (selectDate != null) {
-      [dateYMD, dateISO] = dateFormat(selectDate);
-    }
-
-    console.log(dateYMD, dateISO);
-  };
-
   return (
     <>
       <h1>Countdown</h1>
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <DatePicker
-            selected={selectDate}
-            onChange={(date) => setSelectDate(date)}
-            className="form-filds"
-            id="date"
-            placeholderText="Escolha uma data"
-            dateFormat="dd/MM/yyy"
-          />
-          <button>Clique aqui</button>
-        </form>
-      </div>
       <div className="countdown-container">
         <div className="countdown-el days">
           <p className="text" id="days">
